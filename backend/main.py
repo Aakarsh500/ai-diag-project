@@ -16,8 +16,8 @@ app.add_middleware(
 )
 
 # Load Models
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "xgboost_multiclass_model2.pkl")
-ENCODER_PATH = os.path.join(os.path.dirname(__file__), "..", "label_encoder2.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "xgboost_multiclass_model2.pkl")
+ENCODER_PATH = os.path.join(os.path.dirname(__file__), "label_encoder2.pkl")
 
 with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)

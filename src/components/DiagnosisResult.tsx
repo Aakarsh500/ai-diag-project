@@ -18,12 +18,7 @@ export const DiagnosisResult: React.FC<DiagnosisResultProps> = ({ formData, onSt
       try {
         setLoading(true);
         console.log('Form data submitted:', formData);
-        // Use Vite environment variable for production (Render backend), fallback to localhost
-        const apiUrl = import.meta.env.PROD 
-          ? (import.meta.env.VITE_API_URL || 'https://your-render-app.onrender.com') + '/predict'
-          : 'http://localhost:8000/predict';
-        
-        const response = await fetch(apiUrl, {
+        const response = await fetch('http://localhost:8000/predict', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
