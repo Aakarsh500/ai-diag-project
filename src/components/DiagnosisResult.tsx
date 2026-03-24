@@ -18,8 +18,10 @@ export const DiagnosisResult: React.FC<DiagnosisResultProps> = ({ formData, onSt
       try {
         setLoading(true);
         console.log('Form data submitted:', formData);
-        // Use localhost python server for local dev on Windows, and relative route for live Vercel
-        const apiUrl = import.meta.env.PROD ? '/api/predict' : 'http://localhost:8000/api/predict';
+        // Use Vite environment variable for production (Render backend), fallback to localhost
+        const apiUrl = import.meta.env.PROD 
+          ? (import.meta.env.VITE_API_URL || 'https://your-render-app.onrender.com') + '/predict'
+          : 'http://localhost:8000/predict';
         
         const response = await fetch(apiUrl, {
           method: 'POST',
